@@ -593,7 +593,7 @@ section.input .left {
 }
 
 .visualization table.motifResults td line, #searchbar #panel line, #vizContainer svg line {
-  stroke: #999;
+  /* stroke: #999; */
   stroke-opacity: 0.6;
 }
 
@@ -896,7 +896,7 @@ svg {
 }
 
 #sidebar {
-  width: 240px;
+  width: 340px !important;
   height: 100%;
   padding: 2em;
   box-sizing: border-box;
@@ -919,7 +919,7 @@ svg {
   margin-bottom: 1em;
 }
 #sidebar .info {
-  height: 12em;
+  height: 40em;
   overflow: auto;
 }
 #sidebar .event {

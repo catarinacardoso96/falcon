@@ -1,10 +1,10 @@
 /**
  * Constructs a View that draws the specified model
- * 
+ *
  * @class
- * 
+ *
  * A View is responsible for drawing a single VisualGraph.
- * 
+ *
  * @constructor
  * @param {ModelGraph} model
  * @param {HostPermutation} hostPermutation
@@ -48,7 +48,7 @@ function View(model, hostPermutation, label) {
      */
     this.abbreviatedHostnames = null; // {String} -> {String}
 
-    /** 
+    /**
     * Used to determine if a tailnode is scrolling out of view
     * @private
     */
@@ -65,7 +65,7 @@ function View(model, hostPermutation, label) {
  * Gets the transformer associated with this view. In other words, the
  * transformer configured for and responsible for transforming the
  * {@link VisualGraph} that this view draws.
- * 
+ *
  * @returns {Transformer} The transformer associated with this view
  */
 View.prototype.getTransformer = function() {
@@ -86,7 +86,7 @@ View.prototype.getLogTable = function() {
 
 /**
  * Gets the hosts as an array
- * 
+ *
  * @returns {Array<String>} The hosts
  */
 View.prototype.getHosts = function() {
@@ -95,7 +95,7 @@ View.prototype.getHosts = function() {
 
 /**
  * Gets the model
- * 
+ *
  * @returns {Graph} The model
  */
 View.prototype.getModel = function() {
@@ -104,7 +104,7 @@ View.prototype.getModel = function() {
 
 /**
  * Gets the label
- * 
+ *
  * @returns {Graph} The label
  */
 View.prototype.getLabel = function() {
@@ -113,7 +113,7 @@ View.prototype.getLabel = function() {
 
 /**
  * Gets the current visual model
- * 
+ *
  * @returns {VisualGraph} The current model
  */
 View.prototype.getVisualModel = function() {
@@ -122,7 +122,7 @@ View.prototype.getVisualModel = function() {
 
 /**
  * Sets the width of this view
- * 
+ *
  * @param {Number} newWidth The new width
  */
 View.prototype.setWidth = function(newWidth) {
@@ -135,7 +135,7 @@ View.prototype.setLogTableWidth = function(newWidth) {
 
 /**
  * Returns whether this modelGraph has the given host
- * 
+ *
  * @returns {Boolean} True if the graph has this particular host
  */
 View.prototype.hasHost = function(host) {
@@ -198,9 +198,19 @@ View.prototype.draw = function(viewPosition) {
     $(".highlight").hide();
 
     function drawLinks() {
-        view.visualGraph.getVisualEdges().forEach(function(visualEdge) {
-            view.$svg.append(visualEdge.getSVG());
+        //view.visualGraph.getVisualEdges().forEach(function(visualEdge) {
+        //    view.$svg.append(visualEdge.getSVG());
+        //});
+        var links = view.visualGraph.getVisualEdges();
+        var arr = [];
+        links.forEach(function(visualEdge) {
+            var svg = visualEdge.getSVG();
+            view.$svg.append(svg);
+            arr.push(svg[0]);
         });
+
+        // Bind the links
+        view.controller.bindLinks(d3.selectAll(arr).data(links), links);
     }
 
     function drawNodes() {
@@ -403,7 +413,7 @@ View.prototype.draw = function(viewPosition) {
 }
 /**
  * Returns true if the abbrviated hostname strings have been cached.
- * @return {boolean} 
+ * @return {boolean}
  */
 View.prototype.hasAbbreviatedHostnames = function() {
     return this.abbreviatedHostnames !== null;
@@ -439,7 +449,7 @@ View.prototype.setAbbreviatedHostname = function(hostname, abbrev) {
 /**
  * If isScrolledPast is true, changes colour of visualNode's host to grey.
  * If it is false, changes host node back to the original colour
- * @param {VisualNode} 
+ * @param {VisualNode}
  * @param {Boolean}
  */
 View.prototype.setGreyHost = function(visualNode, isScrolledPast) {
@@ -468,4 +478,3 @@ View.prototype.setGreyHost = function(visualNode, isScrolledPast) {
 View.prototype.getTailNodes = function() {
     return this.tailNodes;
 };
-

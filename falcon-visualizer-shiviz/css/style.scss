@@ -111,7 +111,7 @@ button {
 
     &:hover {
         background: #15b;
-        color: #fff;    
+        color: #fff;
     }
     &:active {
         background: #048;
@@ -119,7 +119,7 @@ button {
     }
     &:disabled {
         background: #aaa;
-        pointer-events: none;   
+        pointer-events: none;
     }
 }
 
@@ -154,7 +154,7 @@ header.icon {
             }
             &.active {
                 opacity: 1;
-                pointer-events: none;    
+                pointer-events: none;
             }
         }
 
@@ -164,8 +164,8 @@ header.icon {
 
                 &.disabled {
                     color: #ddd;
-                    pointer-events: none;              
-                }        
+                    pointer-events: none;
+                }
             }
         }
     }
@@ -231,7 +231,7 @@ section.input {
     .left {
         width: 240pt;
         min-width: 240pt;
-        padding-right: 2em;   
+        padding-right: 2em;
     }
 }
 
@@ -252,7 +252,7 @@ section.input {
     li {
         list-style-position: inside;
         text-indent: -1em;
-        padding-left: 1em; 
+        padding-left: 1em;
     }
 }
 
@@ -266,14 +266,14 @@ section.input {
 
     &:hover {
         opacity: 0.4;
-        cursor: default;  
+        cursor: default;
     }
 
     &:hover + #file_desc, #file_desc:hover {
         display: block;
         border: 1px solid #aaa;
         width: 85%;
-        font-size: 11pt;        
+        font-size: 11pt;
     }
 }
 
@@ -319,7 +319,7 @@ section.input {
         top: 6em;
         position: fixed;
         z-index: 3;
-        left: 0;   
+        left: 0;
     }
 
     .leftTabLinks {
@@ -332,7 +332,7 @@ section.input {
 
             &:hover {
                 text-decoration: none;
-            } 
+            }
         }
 
         li {
@@ -454,14 +454,14 @@ section.input {
         z-index: 1;
         font-size: 10pt;
         line-height: 1em;
-    }  
+    }
 }
 
 %logLineFocus {
     white-space: normal;
     z-index: 3;
     margin-left: 2em;
-    word-break: break-all; 
+    word-break: break-all;
 }
 
 .visualization .log {
@@ -483,7 +483,7 @@ section.input {
         transition-timing-function: ease-out;
 
         &.focus {
-            @extend %logLineFocus;           
+            @extend %logLineFocus;
         }
         &.more {
 
@@ -510,7 +510,7 @@ section.input {
         font-family: sans-serif;
         font-size: 11pt;
         opacity: 0.8;
-        z-index: 4;  
+        z-index: 4;
     }
 
     .logLabelR {
@@ -544,7 +544,7 @@ section.input {
         text-align: center;
         background: inherit;
         color: rgba(255,255,255,.6);
-        box-shadow: 0 -1px #fff, 0 1px #fff; 
+        box-shadow: 0 -1px #fff, 0 1px #fff;
     }
 }
 
@@ -608,12 +608,12 @@ section.input {
             height: 14pt;
             background: #04a;
             position: absolute;
-            overflow: hidden; 
+            overflow: hidden;
             margin-left: 12pt;
-            margin-top: 4pt;        
+            margin-top: 4pt;
         }
         .one {
-            transform: rotate(45deg);        
+            transform: rotate(45deg);
         }
         .two {
             transform: rotate(-45deg);
@@ -648,7 +648,7 @@ section.input {
         margin: 0;
         width: 24pt;
         height: 24pt;
-        padding: 0;   
+        padding: 0;
     }
 
     #prevButton {
@@ -662,7 +662,7 @@ section.input {
             width: calc(100% - 140pt);
         }
         .clear {
-            left: calc(100% - 180pt);    
+            left: calc(100% - 180pt);
         }
         .nav {
             display: initial;
@@ -681,12 +681,12 @@ section.input {
 
 %svgCircle {
     stroke: #fff;
-    stroke-width: 2px;   
+    stroke-width: 2px;
 }
 
 %svgLine {
     stroke: #999;
-    stroke-opacity: 0.6;    
+    stroke-opacity: 0.6;
 }
 
 #searchbar #panel {
@@ -702,7 +702,7 @@ section.input {
 
     table {
         border-collapse: collapse;
-        border-spacing: 0;    
+        border-spacing: 0;
     }
 
     td {
@@ -711,7 +711,7 @@ section.input {
 
     svg {
         min-height: 400px;
-        padding: .5em 0 0 .5em;    
+        padding: .5em 0 0 .5em;
     }
 
     circle {
@@ -721,7 +721,7 @@ section.input {
             opacity: .6;
             display: none;
             cursor: default;
-        }    
+        }
     }
 
     line {
@@ -756,7 +756,7 @@ section.input {
     .searchTabLinks {
         margin: 0;
         display: table;
-        padding: 0 0 .5em 0; 
+        padding: 0 0 .5em 0;
         border-collapse: separate;
         border-spacing: .3em;
 
@@ -767,14 +767,14 @@ section.input {
 
             &:hover {
                 text-decoration: none;
-            }        
+            }
         }
 
         li {
             display: table-cell;
             background: #04A;
             opacity: 0.5;
-            text-align: center; 
+            text-align: center;
 
             &.default {
                 opacity: 1;
@@ -782,7 +782,7 @@ section.input {
                 a {
                     color: #fff;
                 }
-            }       
+            }
         }
     }
 
@@ -795,7 +795,7 @@ section.input {
 
         li {
             display: table-cell;
-        }       
+        }
     }
 
     .tab {
@@ -807,7 +807,7 @@ section.input {
 
         button {
             width: auto;
-            margin: 0 0 .4em;            
+            margin: 0 0 .4em;
         }
     }
 
@@ -817,7 +817,7 @@ section.input {
 
         dt {
             margin: 1em 0 .2em;
-        }       
+        }
     }
 }
 
@@ -853,7 +853,7 @@ svg {
                 font-size: 8pt;
                 fill: #fff;
                 dominant-baseline: central;
-                pointer-events: none;            
+                pointer-events: none;
             }
             rect {
                 opacity: 1;
@@ -942,7 +942,7 @@ svg {
 #labelIconR {
     font-family: "Icomoon";
     margin-left: .5em;
-    margin-right: .5em;   
+    margin-right: .5em;
 }
 
 #labelIconL {
@@ -1023,24 +1023,24 @@ svg {
     border-spacing: 0;
     border-collapse: collapse;
     display: block;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 %fieldsTitle {
     text-align: left;
     vertical-align: top;
     padding-right: 1em;
-    white-space: nowrap;     
+    white-space: nowrap;
 }
 
 %fieldsValue {
     /*word-break: break-all;*/
     overflow: hidden;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;
 }
 
 #sidebar {
-    width: 240px;
+    width: 340px;
     height: 100%;
     padding: 2em;
     box-sizing: border-box;
@@ -1054,35 +1054,35 @@ svg {
         height: 24pt;
         padding: 0;
         margin-top: 0;
-        margin-bottom: 2em;    
+        margin-bottom: 2em;
     }
 
     .pairwiseButton {
         height: 24pt;
         padding: 0;
         margin-top: 0;
-        margin-bottom: 1em;    
+        margin-bottom: 1em;
     }
 
     .info {
         height: 12em;
-        overflow: auto;    
+        overflow: auto;
     }
 
     .event {
         word-break: break-all;
-        margin-bottom: 1em;    
+        margin-bottom: 1em;
     }
 
     .fields {
         @extend %eventFields;
 
         .title {
-            @extend %fieldsTitle;    
+            @extend %fieldsTitle;
         }
         .value {
             @extend %fieldsValue;
-        }  
+        }
     }
 
     .hidden {
@@ -1146,19 +1146,19 @@ svg#defs {
         border-style: solid;
         border-width: 10px;
         border-color: inherit;
-        border-bottom-color: transparent;        
+        border-bottom-color: transparent;
     }
 
     &.right .triangle {
         border-right-color: transparent;
         right: -20px;
-        top: 0;        
+        top: 0;
     }
 
     &.left .triangle {
         border-left-color: transparent;
         left: -20px;
-        top: 0;        
+        top: 0;
     }
 
     .name {
@@ -1173,12 +1173,12 @@ svg#defs {
 
         &:hover {
             margin: 0;
-            background: rgba(0,0,0,.05);     
+            background: rgba(0,0,0,.05);
         }
         &:active {
             margin: 0;
-            background: rgba(0,0,0,.2);  
-        }    
+            background: rgba(0,0,0,.2);
+        }
     }
 
     &:not(.host) button.hb {
@@ -1192,11 +1192,11 @@ svg#defs {
     height: 0px;
     font-family: sans-serif;
     position: fixed;
-    z-index: 4;    
+    z-index: 4;
 }
 
 %constraintInput {
-    color: #737373;   
+    color: #737373;
 }
 
 .hostConstraintDialog {
@@ -1232,7 +1232,7 @@ svg#defs {
         }
         & + br {
             display: none;
-        }   
+        }
     }
 }
 

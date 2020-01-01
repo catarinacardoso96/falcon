@@ -138,7 +138,10 @@ function streamFieldsGenerator(logEntry) {
     fields["dst_port"] = logEntry.dst_port;
     fields["socket_type"] = logEntry.socket_type;
     fields["message"] = logEntry.message;
+    fields["id"] = logEntry.id;
     fields["dependencies"] = logEntry.dependencies;
+    fields["similarity"] = logEntry.data.similarity;
+    fields["message_hex"] = logEntry.data.message_hex;
 
     return fields;
 }

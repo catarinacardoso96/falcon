@@ -616,7 +616,8 @@ AbstractNode.prototype.addParent = function(node) {
     }
 
     if (node.host == this.host) {
-        throw new Exception("AbstractNode.prototype.addParent: A node cannot be the parent of another node who has the same host");
+        // throw new Exception("AbstractNode.prototype.addParent: A node cannot be the parent of another node who has the same host");
+        return;
     }
 
     nodes = this.getParentByHost(node.host);

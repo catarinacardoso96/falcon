@@ -454,6 +454,61 @@ Controller.prototype.hideDiff = function() {
     this.bindScroll();
 };
 
+Controller.prototype.bindLinks = function(links, visual_edges) { //cc19
+    var controller = this;
+    const reset_list = []; // list of strokes to reset width to 1px
+
+    links.on("mouseover", function(selected_link) {
+        isVertical = selected_link.$svg[0].attributes['x1'].value === selected_link.$svg[0].attributes['x2'].value;
+        if (!isVertical) {
+            similarity_source = selected_link.sourceVisualNode.node.logEvents[0].fields.similarity;
+            similarity_target = selected_link.targetVisualNode.node.logEvents[0].fields.similarity;
+            similarity = Object.assign({}, similarity_source, similarity_target);
+            // console.log(similarity_source, similarity_target);
+
+            visual_edges.forEach(edge => {
+                isVertical = edge.$svg[0].attributes['x1'].value === edge.$svg[0].attributes['x2'].value;
+                if (!isVertical) {
+                    if (selected_link.sourceVisualNode.node.logEvents[0].fields.message != edge.sourceVisualNode.node.logEvents[0].fields.message) {
+
+                      id_source = edge.sourceVisualNode.node.logEvents[0].fields.id;
+                      id_target = edge.targetVisualNode.node.logEvents[0].fields.id;
+                      // console.log(id_source, id_target);
+
+                      if (id_source in similarity || id_target in similarity) {
+                        if (similarity[id_source] && similarity[id_target]) {
+                          lower = similarity[id_source] < similarity[id_target] ? similarity[id_source] : similarity[id_target];
+                        } else if (similarity[id_source]) {
+                          lower = similarity[id_source];
+                        } else if (similarity[id_target]) {
+                          lower = similarity[id_target];
+                        }
+
+                        if (lower > 75) {
+                          edge.$svg[0].attributes['stroke'].value = "#008000";
+                        } else if (lower > 50) {
+                          edge.$svg[0].attributes['stroke'].value = "#808000";
+                        } else {
+                          edge.$svg[0].attributes['stroke'].value = "#800000";
+                        }
+
+                        edge.$svg[0].attributes['stroke-width'].value = "5px";
+                        reset_list.push(edge);
+                      }
+                    }
+                }
+            });
+  				  selected_link.$svg[0].attributes['stroke-width'].value = "5px";
+        }
+    }).on("mouseout", function(e){
+		    e.$svg[0].attributes['stroke-width'].value = "1px";
+        reset_list.forEach(val => {
+          val.$svg[0].attributes['stroke'].value = "#999";
+          val.$svg[0].attributes['stroke-width'].value = "1px";
+        });
+    });
+}
+
 /**
  * Binds events to the nodes.
  *
@@ -509,18 +564,36 @@ Controller.prototype.bindNodes = function(nodes) {
         if (!e.isCollapsed()) {
             var fields = e.getNode().getLogEvents()[0].getFields();
             for (var i in fields) {
-                var $f = $("<tr>", {
-                    "class": "field"
-                });
-                var $t = $("<th>", {
-                    "class": "title"
-                }).text(i + ":");
+              var $f = $("<tr>", {
+                "class": "field"
+              });
+              var $t = $("<th>", {
+                "class": "title"
+              }).text(i + ":");
+              if (i != 'similarity') {
                 var $v = $("<td>", {
                     "class": "value"
                 }).text(fields[i]);
-
-                $f.append($t).append($v);
-                $(".fields").append($f);
+              } else {
+                var $v = $("<tr>", {
+                    "class": "field"
+                });
+                for (var j in fields[i]) {
+                  var $ff = $("<tr>", {
+                      "class": "field"
+                  });
+                  var $tt = $("<th>", {
+                      "class": "title"
+                  }).text(j + ":");
+                  var $vv = $("<td>", {
+                      "class": "value"
+                  }).text(fields[i][j]);
+                  $ff.append($tt).append($vv);
+                  $v.append($ff);
+                }
+              }
+              $f.append($t).append($v);
+              $(".fields").append($f);
             }
         }
 
@@ -821,18 +894,9 @@ Controller.prototype.showDialog = function(e, type, elem) {
         // Add fields, if normal node
         var fields = e.getNode().getLogEvents()[0].getFields();
         for (var i in fields) {
-            var $f = $("<tr>", {
-                "class": "field"
-            });
-            var $t = $("<th>", {
-                "class": "title"
-            }).text(i + ":");
-            var $v = $("<td>", {
-                "class": "value"
-            }).text(fields[i]);
-
-            $f.append($t).append($v);
-            $dialog.find(".info").append($f);
+          if (i == 'message_hex') {
+            $dialog.find(".info").append(fields[i]);
+          }
         }
 
         // Hide highlight button
